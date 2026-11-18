@@ -206,3 +206,22 @@ html, body {
 @media (max-width: 600px) {
   .task-btn { width: 90px; }
 }
+
+/* ===== Readability overrides ===== */
+
+/* 98.css sets a small pixel font on these, so bump the size */
+.window, .title-bar, .window-body, button, input, select, textarea, label,
+.desktop-icon, .task-btn, .start-menu li, .clock, .statusbar {
+  font-size: 13px;
+}
+
+/* Reading windows: a smoother, more readable font and more line spacing */
+.page, .page p, .page li, .page legend {
+  font-family: Tahoma, "Segoe UI", Verdana, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: auto;
+}
+
+/* resume.txt */
+.notepad textarea { font-size: 14px; }
