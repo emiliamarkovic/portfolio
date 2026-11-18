@@ -1,0 +1,208 @@
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Pixelated MS Sans Serif", Arial, sans-serif; /* font comes from 98.css */
+  font-size: 11px;
+  user-select: none;
+}
+
+/* ===== Desktop ===== */
+#desktop {
+  position: fixed;
+  inset: 0 0 30px 0;          /* leave room for the taskbar */
+  background: #008080;        /* classic teal */
+  overflow: hidden;
+}
+
+#icons {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: calc(100% - 16px);
+}
+
+.desktop-icon {
+  width: 84px;
+  padding: 4px;
+  background: none;
+  border: 1px solid transparent;
+  box-shadow: none;
+  color: #fff;
+  text-align: center;
+  cursor: default;
+  min-width: 0;
+  min-height: 0;
+}
+.desktop-icon:focus { outline: none; }
+.desktop-icon .glyph { display: block; font-size: 32px; line-height: 1.2; }
+.desktop-icon .label { display: block; margin-top: 2px; text-shadow: 1px 1px #000; }
+.desktop-icon.selected .label { background: #000080; text-shadow: none; outline: 1px dotted #ff0; }
+
+/* ===== Windows ===== */
+.app-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  max-height: 100%;
+}
+.app-window.minimized { display: none; }
+.app-window.maximized {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.app-window .title-bar { cursor: default; touch-action: none; }
+.app-window .window-body {
+  flex: 1;
+  margin: 3px;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* ===== Taskbar ===== */
+#taskbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px #dfdfdf, 0 -1px #fff;
+  z-index: 100000;
+}
+.start-button { font-size: 12px; min-width: 60px; height: 24px; }
+#task-buttons { display: flex; gap: 3px; flex: 1; overflow: hidden; }
+.task-btn {
+  width: 150px;
+  min-width: 0;
+  height: 24px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.task-btn.active {
+  font-weight: bold;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+              inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+.clock {
+  padding: 3px 10px;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey;
+  font-size: 11px;
+}
+
+/* ===== Start menu ===== */
+.start-menu {
+  position: fixed;
+  left: 2px;
+  bottom: 30px;
+  min-width: 200px;
+  margin: 0;
+  padding: 3px;
+  list-style: none;
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf,
+              inset -2px -2px grey, inset 2px 2px #fff;
+  z-index: 100001;
+}
+.start-menu[hidden] { display: none; }
+.start-menu li { padding: 6px 10px; font-size: 12px; }
+.start-menu li:hover { background: #000080; color: #fff; }
+.start-menu li.divider { padding: 0; margin: 3px 0; height: 2px; border-top: 1px solid grey; border-bottom: 1px solid #fff; }
+.start-menu li.divider:hover { background: none; }
+
+/* ===== App: Projects folder ===== */
+.explorer { display: flex; flex-direction: column; height: 100%; gap: 4px; }
+.explorer .address { display: flex; align-items: center; gap: 6px; }
+.explorer .address input { flex: 1; }
+.file-grid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  padding: 8px;
+  background: #fff;
+  overflow: auto;
+}
+.file-icon {
+  width: 90px;
+  background: none;
+  border: 1px solid transparent;
+  box-shadow: none;
+  text-align: center;
+  min-width: 0; min-height: 0;
+  padding: 4px;
+}
+.file-icon .glyph { display: block; font-size: 30px; }
+.file-icon.selected .label { background: #000080; color: #fff; }
+.statusbar { padding: 2px 4px; box-shadow: inset 1px 1px grey, inset -1px -1px #fff; }
+
+/* ===== App: About / Experience / Project detail ===== */
+.page { padding: 8px; line-height: 1.5; user-select: text; }
+.page h1 { font-size: 16px; margin: 0 0 4px; }
+.page h2 { font-size: 13px; margin: 12px 0 2px; }
+.page p { margin: 0 0 8px; }
+.page ul { margin: 4px 0 8px; padding-left: 18px; }
+.page a { color: #0000ee; }
+.links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+/* ===== App: Notepad (resume.txt) ===== */
+.notepad { display: flex; flex-direction: column; height: 100%; }
+.notepad .menubar { display: flex; gap: 12px; padding: 2px 6px; border-bottom: 1px solid grey; }
+.notepad textarea {
+  flex: 1;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  background: #fff;
+  user-select: text;
+}
+
+/* ===== App: Paint ===== */
+.paint { display: flex; flex-direction: column; gap: 4px; height: 100%; }
+.paint-tools { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.paint-tools button.active { box-shadow: inset 1px 1px grey, inset -1px -1px #fff; }
+.paint-canvas-wrap { flex: 1; overflow: auto; background: #808080; padding: 2px; }
+.paint canvas { background: #fff; cursor: crosshair; touch-action: none; display: block; max-width: none; }
+.paint-palette { display: flex; flex-wrap: wrap; gap: 2px; align-items: center; }
+.swatch {
+  width: 18px; height: 18px; min-width: 0; min-height: 0; padding: 0;
+  box-shadow: inset 1px 1px grey, inset -1px -1px #fff;
+}
+.swatch.active { outline: 2px solid #000080; outline-offset: 1px; }
+
+/* ===== Shutdown screen ===== */
+.shutdown {
+  position: fixed; inset: 0;
+  background: #000;
+  color: #ff8c00;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-size: 18px;
+  z-index: 200000;
+  cursor: pointer;
+}
+
+/* ===== Small screens: windows open maximized (see script.js) ===== */
+@media (max-width: 600px) {
+  .task-btn { width: 90px; }
+}

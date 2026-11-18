@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name | Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name, computer science student." />
+
+  <!-- 98.css gives us the authentic Windows 98 buttons, title bars, etc. -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- The desktop: icons live here, and windows get added to it by script.js -->
+  <main id="desktop">
+    <div id="icons" aria-label="Desktop icons"></div>
+  </main>
+
+  <!-- Start menu (built by script.js) -->
+  <ul id="start-menu" class="start-menu" hidden></ul>
+
+  <!-- Taskbar -->
+  <footer id="taskbar">
+    <button id="start-button" class="start-button"><b>Start</b></button>
+    <div id="task-buttons"></div>
+    <div id="clock" class="clock" aria-label="Clock"></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
