@@ -36,7 +36,6 @@ const experience = [
       "I independently implemented a custom DNABERT-style transformer with a multiple-instance learning classifier for four-class pediatric brain tumour classification using cerebrospinal fluid cell-free DNA",
       "I also developed EMIT, a Snakemake-based pipeline for end-to-end cfDNA fragmentomics analysis.",
       "I was selected as one of seven of over 200 research students to present my research findings at the SickKids SSuRe Symposium as an oral presenter representing the Cell and Systems Biology department, where I won the outstanding abstract merit award!"
-"
     ],
   },
   {
