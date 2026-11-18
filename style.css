@@ -225,3 +225,15 @@ html, body {
 
 /* resume.txt */
 .notepad textarea { font-size: 14px; }
+
+/* ===== Bigger icons ===== */
+#icons { gap: 14px; top: 16px; left: 16px; }
+
+.desktop-icon { width: 110px; padding: 6px; }
+.desktop-icon .glyph { font-size: 56px; line-height: 1.1; }
+.desktop-icon .label { font-size: 14px; margin-top: 4px; }
+
+/* Icons inside the Projects folder */
+.file-icon { width: 110px; }
+.file-icon .glyph { font-size: 44px; }
+.file-icon .label { font-size: 13px; }
