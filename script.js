@@ -49,21 +49,21 @@ const experience = [
 const projects = [
   {
     name: "project-one",
-    icon: "📁",
+    icon: "icons/project.png",
     stack: "Python, Flask",
     description: "One or two sentences on what it does and why you built it.",
     link: "https://github.com/emiliamarkovic",
   },
   {
     name: "project-two",
-    icon: "📁",
+    icon: "icons/project.png",
     stack: "Java, JUnit",
     description: "Replace this with another project description.",
     link: "https://github.com/emiliamarkovic",
   },
   {
     name: "project-three",
-    icon: "📁",
+    icon: "icons/project.png",
     stack: "JavaScript",
     description: "Another one. Aim for 3-6 projects.",
     link: "https://github.com/emiliamarkovic",
@@ -111,6 +111,13 @@ function el(html) {
 
 function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
+}
+
+function iconHTML(icon, size = 32) {
+  const isImage = /\.(png|gif|svg)$/i.test(icon);
+  return isImage
+    ? `<img class="icon-img" src="${icon}" width="${size}" height="${size}" alt="">`
+    : icon;
 }
 
 const isSmallScreen = () => window.innerWidth < 600;
@@ -162,7 +169,7 @@ function openWindow(key, build) {
 
   win.innerHTML = `
     <div class="title-bar">
-      <div class="title-bar-text">${cfg.icon} ${cfg.title}</div>
+      <div class="title-bar-text">${iconHTML(cfg.icon, 16)} ${cfg.title}</div>
       <div class="title-bar-controls">
         <button aria-label="Minimize"></button>
         <button aria-label="Maximize"></button>
@@ -179,7 +186,7 @@ function openWindow(key, build) {
   // Taskbar button for this window
   const taskBtn = document.createElement("button");
   taskBtn.className = "task-btn";
-  taskBtn.textContent = `${cfg.icon} ${cfg.title}`;
+  taskBtn.innerHTML = `${cfg.icon} ${cfg.title}`;
   taskBtn.addEventListener("click", () => {
     const entry = openWindows.get(key);
     if (entry.win.classList.contains("minimized")) focusWindow(key);
@@ -301,7 +308,7 @@ function renderProjects() {
   projects.forEach((p) => {
     const item = el(`
       <button class="file-icon">
-        <span class="glyph">${p.icon}</span>
+        <span class="glyph">${iconHTML(p.icon, 64)}</span>
         <span class="label">${p.name}</span>
       </button>
     `);
@@ -315,7 +322,7 @@ function renderProjects() {
 function openProject(p) {
   openWindow("project:" + p.name, () => ({
     title: p.name,
-    icon: "📄",
+    icon: "icons/resume.png",
     width: 400,
     height: 260,
     content: el(`
@@ -452,11 +459,11 @@ function renderPaint() {
 
 // The list of desktop apps. Add a new entry here to add a new icon + window.
 const apps = [
-  { id: "about", label: "About Me", icon: "👤", title: "About Me", width: 420, height: 300, render: renderAbout },
-  { id: "projects", label: "Projects", icon: "📁", title: "Projects", width: 480, height: 340, render: renderProjects },
-  { id: "experience", label: "Experience", icon: "💼", title: "Experience", width: 460, height: 360, render: renderExperience },
-  { id: "resume", label: "resume.txt", icon: "📄", title: "resume.txt - Notepad", width: 500, height: 380, render: renderResume },
-  { id: "paint", label: "Paint", icon: "🎨", title: "untitled - Paint", width: 560, height: 440, render: renderPaint },
+  { id: "about", label: "About Me", icon: "icons/about.png", title: "About Me", width: 420, height: 300, render: renderAbout },
+  { id: "projects", label: "Projects", icon: "icons/projects.png", title: "Projects", width: 480, height: 340, render: renderProjects },
+  { id: "experience", label: "Experience", icon: "icons/experience.png", title: "Experience", width: 460, height: 360, render: renderExperience },
+  { id: "resume", label: "resume.txt", icon: "icons/resume.png", title: "resume.txt - Notepad", width: 500, height: 380, render: renderResume },
+  { id: "paint", label: "Paint", icon: "icons/paint.png", title: "untitled - Paint", width: 560, height: 440, render: renderPaint },
 ];
 
 function openApp(app) {
@@ -475,7 +482,7 @@ function openApp(app) {
 apps.forEach((app) => {
   const icon = el(`
     <button class="desktop-icon">
-      <span class="glyph">${app.icon}</span>
+      <span class="glyph">${iconHTML(app.icon, 64)}</span>
       <span class="label">${app.label}</span>
     </button>
   `);
@@ -491,7 +498,7 @@ desktop.addEventListener("pointerdown", (e) => {
 // Start menu
 apps.forEach((app) => {
   const li = document.createElement("li");
-  li.textContent = `${app.icon}  ${app.label}`;
+  li.innerHTML = `${app.icon}  ${app.label}`;
   li.addEventListener("click", () => {
     openApp(app);
     startMenu.hidden = true;
