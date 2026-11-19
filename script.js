@@ -186,7 +186,7 @@ function openWindow(key, build) {
   // Taskbar button for this window
   const taskBtn = document.createElement("button");
   taskBtn.className = "task-btn";
-  taskBtn.innerHTML = `${cfg.icon} ${cfg.title}`;
+  taskBtn.innerHTML = `${iconHTML(cfg.icon, 16)} ${cfg.title}`;
   taskBtn.addEventListener("click", () => {
     const entry = openWindows.get(key);
     if (entry.win.classList.contains("minimized")) focusWindow(key);
@@ -498,7 +498,7 @@ desktop.addEventListener("pointerdown", (e) => {
 // Start menu
 apps.forEach((app) => {
   const li = document.createElement("li");
-  li.innerHTML = `${app.icon}  ${app.label}`;
+  li.innerHTML = `${iconHTML(app.icon, 16)}  ${app.label}`;
   li.addEventListener("click", () => {
     openApp(app);
     startMenu.hidden = true;
