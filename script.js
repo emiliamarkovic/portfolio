@@ -49,21 +49,21 @@ const experience = [
 const projects = [
   {
     name: "project-one",
-    icon: "icons/project.png",
+    icon: "icons/projects.png",
     stack: "Python, Flask",
     description: "One or two sentences on what it does and why you built it.",
     link: "https://github.com/emiliamarkovic",
   },
   {
     name: "project-two",
-    icon: "icons/project.png",
+    icon: "icons/projects.png",
     stack: "Java, JUnit",
     description: "Replace this with another project description.",
     link: "https://github.com/emiliamarkovic",
   },
   {
     name: "project-three",
-    icon: "icons/project.png",
+    icon: "icons/projects.png",
     stack: "JavaScript",
     description: "Another one. Aim for 3-6 projects.",
     link: "https://github.com/emiliamarkovic",
