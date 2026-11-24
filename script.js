@@ -308,7 +308,7 @@ function renderProjects() {
   projects.forEach((p) => {
     const item = el(`
       <button class="file-icon">
-        <span class="glyph">${iconHTML(p.icon, 64)}</span>
+        <span class="glyph">${iconHTML("icons/projects.png", 64)}</span>
         <span class="label">${p.name}</span>
       </button>
     `);
