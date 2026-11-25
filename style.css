@@ -237,3 +237,12 @@ html, body {
 .file-icon { width: 110px; }
 .file-icon .glyph { font-size: 44px; }
 .file-icon .label { font-size: 13px; }
+
+/* ===== Windows 95 mouse cursor ===== */
+html, body, a, button, select, label,
+.desktop-icon, .file-icon, .task-btn, .start-menu li,
+.app-window .title-bar {
+  cursor: url("icons/cursor.png") 0 0, default;
+  cursor: -webkit-image-set(url("icons/cursor.png") 1x, url("icons/cursor@2x.png") 2x) 0 0, default;
+  cursor: image-set(url("icons/cursor.png") 1x, url("icons/cursor@2x.png") 2x) 0 0, default;
+}
